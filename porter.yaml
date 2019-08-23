@@ -30,9 +30,36 @@ install:
         - -c
         - echo Hello World
 
+  - kubernetes:
+      description: "Create Azure Stack AKS deployment for SQL Edge..."
+      manifests:
+        - manifests/sql_deployment_cnab.yaml
+        - manifests/sql_service_cnab.yaml
+      wait: true
+#      outputs:
+#        - name: "IP_ADDRESS"
+#          resourceType: service
+#          resourceName: nginx-deployment
+#          jsonPath: "{.spec.clusterIP}"
+
+  - kubernetes:
+      description: "Create Azure Stack AKS deployment for Northwind..."
+      manifests:
+        - northwind_deployment_cnab.yaml
+        - northwind_service_cnab.yaml
+      wait: true
+      outputs:
+        - name: "IP_ADDRESS"
+          resourceType: service
+          resourceName: nginx-deployment
+          jsonPath: "{.spec.clusterIP}"
+
+
+
+
 upgrade:
   - exec:
-      description: "World 2.0"
+      description: "Update not implemented yet."
       command: bash
       arguments:
         - -c
