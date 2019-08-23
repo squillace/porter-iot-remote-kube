@@ -48,11 +48,11 @@ install:
         - northwind_deployment_cnab.yaml
         - northwind_service_cnab.yaml
       wait: true
-      outputs:
-        - name: "IP_ADDRESS"
-          resourceType: service
-          resourceName: nginx-deployment
-          jsonPath: "{.spec.clusterIP}"
+#      outputs:
+#        - name: "IP_ADDRESS"
+#          resourceType: service
+#          resourceName: nginx-deployment
+#          jsonPath: "{.spec.clusterIP}"
 
 
 
