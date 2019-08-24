@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: northwind-stack-deployment-cnab
+  namespace: cnab
 spec:
   replicas: 2
   template:
@@ -24,4 +25,4 @@ spec:
           ports:
             - containerPort: 80
       imagePullSecrets:
-        - name: regcred
+        - name: cnab-regcred

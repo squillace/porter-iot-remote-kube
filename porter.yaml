@@ -65,6 +65,8 @@ uninstall:
         - deploy
         - sql-deployment
         - northwind-stack-deployment-cnab
+        - "--namespace"
+        - cnab
   - exec:
       description: "Removing services..."
       command: kubectl

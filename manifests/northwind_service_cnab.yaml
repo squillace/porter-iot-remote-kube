@@ -3,6 +3,7 @@ kind: Service
 metadata:
   # Name of the service
   name: northwind-service-cnab
+  namespace: cnab
   labels:
     run: northwind
 spec:

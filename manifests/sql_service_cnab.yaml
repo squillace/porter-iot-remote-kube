@@ -3,6 +3,7 @@ kind: Service
 metadata:
   # Name of the service
   name: sqldbk8s
+  namespace: cnab
   labels:
     run: sqldbk8s
 spec:
