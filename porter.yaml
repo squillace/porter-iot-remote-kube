@@ -47,6 +47,17 @@ install:
           resourceType: service
           resourceName: northwind-service-cnab
           jsonPath: "{.spec.clusterIP}"
+        - name: "NORTHWIND_INGRESS_IP"
+          resourceType: service
+          resourceName: northwind-service-cnab
+          jsonPath: "{.status.loadBalancer.ingress.ip}"
+
+#  - exec:
+#      description: "Help text as the loadBalancer IP address does not appear right away."
+#      commands: bash
+#      arguments: 
+#        - -c
+#        - echo "Use k get svc -n cnab -l run=northwind -o jsonpath=\"{.items[*].status.loadBalancer.ingress[0].ip}\""
 
 upgrade:
   - exec:
@@ -86,4 +97,12 @@ uninstall:
 credentials:
   - name: kubeconfig
     path: /root/.kube/config
+
+outputs:
+  - name: SQL_IP_ADDRESS
+    type: string
+  - name: NORTHWIND_IP_ADDRESS
+    type: string
+  - name: NORTHWIND_INGRESS_IP
+    type: string
 
