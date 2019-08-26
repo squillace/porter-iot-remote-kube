@@ -6,8 +6,8 @@
 name: porter-iot-remote-kube
 version: 0.1.0
 description: "An example that uses a cert to deploy to Azure Stack AKS on the internet but secured with a cert."
-invocationImage: squillace.azurecr.io/squillace/porter-iot-remote-kube:latest
-tag: squillace.azurecr.io/squillace/porter-iot-remote-kube:latest
+invocationImage: squillace/porter-iot-remote-kube:latest
+tag: squillace/porter-iot-remote-kube:latest
 
 # Uncomment to support thick, or offline bundle exporting.
 #imageMap:
@@ -38,11 +38,11 @@ install:
         - manifests/sql_deployment_cnab.yaml
         - manifests/sql_service_cnab.yaml
       wait: true
-      outputs:
-        - name: "SQL_IP_ADDRESS"
-          resourceType: service
-          resourceName: sqldbk8s
-          jsonPath: "{.spec.clusterIP}"
+#      outputs:
+#        - name: "SQL_IP_ADDRESS"
+#          resourceType: service
+#          resourceName: sqldbk8s
+#          jsonPath: "{.spec.clusterIP}"
 
   - kubernetes:
       description: "Create Azure Stack AKS deployment for Northwind..."
@@ -50,15 +50,15 @@ install:
         - manifests/northwind_deployment_cnab.yaml
         - manifests/northwind_service_cnab.yaml
       wait: true
-      outputs:
-        - name: "NORTHWIND_IP_ADDRESS"
-          resourceType: service
-          resourceName: northwind-service-cnab
-          jsonPath: "{.spec.clusterIP}"
-        - name: "NORTHWIND_INGRESS_IP"
-          resourceType: service
-          resourceName: northwind-service-cnab
-          jsonPath: "{.status.loadBalancer.ingress.ip}"
+#      outputs:
+#        - name: "NORTHWIND_IP_ADDRESS"
+#          resourceType: service
+#          resourceName: northwind-service-cnab
+#          jsonPath: "{.spec.clusterIP}"
+#        - name: "NORTHWIND_INGRESS_IP"
+#          resourceType: service
+#          resourceName: northwind-service-cnab
+#          jsonPath: "{.status.loadBalancer.ingress.ip}"
 
 #  - exec:
 #      description: "Help text as the loadBalancer IP address does not appear right away."
@@ -106,11 +106,11 @@ credentials:
   - name: kubeconfig
     path: /root/.kube/config
 
-outputs:
-  - name: SQL_IP_ADDRESS
-    type: string
-  - name: NORTHWIND_IP_ADDRESS
-    type: string
-  - name: NORTHWIND_INGRESS_IP
-    type: string
+# outputs:
+#  - name: SQL_IP_ADDRESS
+#    type: string
+#  - name: NORTHWIND_IP_ADDRESS
+#    type: string
+#  - name: NORTHWIND_INGRESS_IP
+#    type: string
 
