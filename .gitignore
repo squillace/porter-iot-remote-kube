@@ -1,3 +1,5 @@
 Dockerfile
 .cnab/
 -cnab/
+.exe
+.dmg
